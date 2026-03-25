@@ -1,0 +1,21 @@
+{
+  "name": "ex8_deployment",
+  "version": "1.0.0",
+  "description": "Exercise 8, CI/CD and testing",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha",
+    "dev": "set NODE_ENV=dev&& node ./src/server.js"
+  },
+  "author": "Eero Lainepää",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.0.0",
+    "supertest": "^7.0.0"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
