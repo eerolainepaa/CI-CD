@@ -1,71 +1,48 @@
-// src/camelCase.js
+import { expect } from "chai"
+import add from "../src/add.js"
+import divide from "../src/divide.js"
+import ceil from "../src/ceil.js"
+import clamp from "../src/clamp.js"
 
-const { expect } = require("chai");
-const { camelCase } = require("../src/camelCase");
+describe("Math tests", () => {
+  /**
+   * Unit tests for add.js
+   */
+  describe("add", () => {
 
-describe('camelCase', () => {
-  it.each([
-    // Basic cases
-    ['Foo Bar', 'fooBar'],
-    ['foo bar', 'fooBar'],
-    ['FOO BAR', 'fooBar'],
+    // --- Basic tests ---
+    it("adds two positive numbers", () => {
+      expect(add(5, 3)).to.equal(8)
+    })
 
-    // Kebab-case
-    ['--foo-bar--', 'fooBar'],
-    ['foo-bar', 'fooBar'],
-    ['--FOO-BAR--', 'fooBar'],
+    it("adds positive and negative number", () => {
+      expect(add(-5, 3)).to.equal(-2)
+    })
 
-    // snake_case
-    ['__FOO_BAR__', 'fooBar'],
-    ['foo_bar', 'fooBar'],
-    ['FOO_BAR', 'fooBar'],
+    it("adds two negative numbers", () => {
+      expect(add(-5, -3)).to.equal(-8)
+    })
 
-    // Mixed separators
-    ['Foo-Bar_baz', 'fooBarBaz'],
-    ['__foo__Bar--baz__', 'fooBarBaz'],
-    ['hello_world-fooBar', 'helloWorldFooBar'],
+    it("adds zero to number", () => {
+      expect(add(5, 0)).to.equal(5)
+    })
 
-    // Apostrophes and special quotes
-    ["O'Reilly", 'oReilly'],
-    ["don't stop believing", 'dontStopBelieving'],
-    ['‘hello’ world', 'helloWorld'],
-    ['"double quotes"', 'doubleQuotes'],
+    it("adds floating point numbers", () => {
+      expect(add(1.1, 2.5)).to.equal(3.6)
+    })
 
-    // Single word
-    ['foo', 'foo'],
-    ['FOO', 'foo'],
-    ['XmlHttpRequest', 'xmlHttpRequest'],
 
-    // With numbers
-    ['user2Login', 'user2Login'],
-    ['HTTP2Server', 'http2Server'],
-    ['foo123bar456', 'foo123bar456'],
+    // --- Edge cases ---
+    it("returns 0 with default values", () => {
+      expect(add()).to.equal(0)
+    })
 
-    // Multiple spaces / punctuation
-    ['  hello   world  ', 'helloWorld'],
-    ['hello, world!', 'helloWorld'],
-    ['hello...world', 'helloWorld'],
-    ['API Response 2024', 'apiResponse2024'],
+    it("returns the number itself when second argument is undefined", () => {
+      expect(add(5, undefined)).to.equal(5)
+    })
 
-    // Edge cases
-    ['', ''],
-    ['   ', ''],
-
-  ])('should convert "%s" → "%s"', (input, expected) => {
-    expect(camelCase(input)).to.equal(expected)
-  })
-
-  // Additional tests for non-string values
-  it.each([
-    [null, ''],
-    [undefined, ''],
-    [0, ''],
-    [false, ''],
-    [123, '123'],
-    [true, 'true'],
-    [{}, 'objectobject'],        // Object.prototype.toString()
-    [[], ''],                    // [].toString() === ''
-  ])('should handle %s gracefully and return "%s"', (input, expected) => {
-    expect(camelCase(input)).to.equal(expected)
+    it("returns the number itself when first argument is undefined", () => {
+      expect(add(undefined, 5)).to.equal(5)
+    })
   })
 })

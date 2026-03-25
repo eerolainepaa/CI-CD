@@ -3,15 +3,29 @@
   "version": "1.0.0",
   "description": "Exercise 8, CI/CD and testing",
   "main": "index.js",
-  "type": "module",
+  "c8": {
+    "exclude": [
+      "src/.internal/**",
+      "coverage/**"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "all": true
+  },
   "scripts": {
     "test": "mocha",
-    "dev": "set NODE_ENV=dev&& node ./src/server.js"
+    "coverage": "c8 mocha",
+    "coveralls": "c8 report --reporter=text-lcov | coveralls"
   },
   "author": "Eero Lainepää",
   "license": "MIT",
   "devDependencies": {
+    "c8": "^11.0.0",
     "chai": "^5.2.0",
+    "coveralls": "^3.1.1",
+    "globals": "^17.4.0",
     "mocha": "^11.0.0",
     "supertest": "^7.0.0"
   },
