@@ -15,5 +15,6 @@ The goal of this project was to implement a robust testing environment for a pro
 
 ### Key Features
 - **Automated Pipeline:** Every push triggers a GitHub Actions workflow that install dependencies, executes the test suite, and transmits coverage data to Coveralls.
-- **High Test Coverate:** Achieved 99.18% line coverage and 92.98% branch coverage across the library (excluding /.internal)
+- **High Test Coverage:** Achieved 99.18% line coverage and 92.98% branch coverage across the library (excluding /.internal)
 - **Debugging:** Identified and fixed critical bugs in core functions.
+- **Documentation:** More extensive analysis of the bugs and testing methodology can be found in the [report.]((https://github.com/username/repo/blob/main/docs/Ex8%20Report.pdf))
