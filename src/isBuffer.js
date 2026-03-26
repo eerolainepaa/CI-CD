@@ -10,7 +10,7 @@ const freeModule = freeExports && typeof module === 'object' && module !== null 
 const moduleExports = freeModule && freeModule.exports === freeExports
 
 /** Built-in value references. */
-const Buffer = moduleExports ? root.Buffer : undefined
+const Buffer = globalThis.Buffer
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 const nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined
