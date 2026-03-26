@@ -32,6 +32,7 @@ function slice(array, start, end) {
   if (end < 0) {
     end += length
   }
+  end = end > length ? length : end
   length = start > end ? 0 : ((end - start) >>> 0)
   start >>>= 0
 
