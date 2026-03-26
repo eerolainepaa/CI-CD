@@ -223,9 +223,6 @@ describe("Language tests", () => {
   describe("isBuffer", () => {
 
     // --- Basic tests ---
-    // isBuffer falls back to () => false in ESM because the CommonJS
-    // module detection (freeModule/freeExports) doesn"t work with ES modules.
-    // Buffer.isBuffer(buf) would return true, but nativeIsBuffer is never assigned.
     it("returns true for a Buffer", () => {
       expect(isBuffer(new Buffer(2))).to.be.true
     })
